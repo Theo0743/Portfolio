@@ -5,11 +5,12 @@
 }
 
 body, html {
-    margin: 0; padding: 0;
-    height: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--dark);
-    overflow: hidden;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    height: 100%;
 }
 
 #hero-section {
@@ -92,9 +93,24 @@ body, html {
     padding: 0 5%; background: var(--dark); height: 10vh;
 }
 
-.dropdown-container select {
-    padding: 8px; border-radius: 5px; background: #252545; color: white; border: 1px solid var(--primary);
+.dropdown-container {
+    display: flex;
+    align-items: center;
 }
+
+#page-select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid var(--primary);
+    background-color: #252545;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+
 
 .hidden { display: none; }
 .slide-up { transform: translateY(-100%); }
@@ -103,11 +119,8 @@ body, html {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-img.icon {
-    width: 150px;
-    position: fixed; /* L'icône ne bouge pas au scroll */
-    top: 20px;       /* Distance depuis le haut */
-    left: 20px;      /* Distance depuis la gauche */
-    margin-top: 0;   /* On enlève le margin car top fait le travail */
-    z-index: 100;    /* Pour être sûr qu'elle passe au-dessus du reste */
+.icon {
+    width: 150px; /* Taille demandée */
+    height: auto;
+    display: block;
 }

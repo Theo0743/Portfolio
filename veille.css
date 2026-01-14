@@ -23,7 +23,7 @@ body, html {
     align-items: center;
     padding: 0 5%;
     background: var(--dark);
-    height: 80px; /* Hauteur fixe pour la nav */
+    height: 10vh; /* Hauteur fixe pour la nav */
     color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: sticky;
@@ -33,7 +33,7 @@ body, html {
 
 /* Ton Logo en haut à gauche */
 .icon {
-    width: 80px; /* Taille demandée */
+    width: 150px; /* Taille demandée */
     height: auto;
     display: block;
 }
@@ -56,10 +56,7 @@ body, html {
     outline: none;
 }
 
-#page-select:hover {
-    background-color: var(--secondary);
-    border-color: white;
-}
+
 
 /* --- Contenu Principal --- */
 .content {
