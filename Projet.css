@@ -1,0 +1,118 @@
+/* --- Variables et Bases --- */
+:root {
+    --primary: #00d2ff;     /* Bleu clair Tech */
+    --secondary: #3a7bd5;   /* Bleu plus soutenu */
+    --dark: #1a1a2e;        /* Fond sombre */
+    --text-dark: #333333;
+    --light-bg: #f4f7f6;    /* Fond clair pour le contenu */
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    height: 100%;
+}
+
+/* --- Barre de Navigation --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    background: var(--dark);
+    height: 80px; /* Hauteur fixe pour la nav */
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Ton Logo en haut à gauche */
+.icon {
+    width: 80px; /* Taille demandée */
+    height: auto;
+    display: block;
+}
+
+/* --- Menu Déroulant (Dropdown) --- */
+.dropdown-container {
+    display: flex;
+    align-items: center;
+}
+
+#page-select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid var(--primary);
+    background-color: #252545;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#page-select:hover {
+    background-color: var(--secondary);
+    border-color: white;
+}
+
+/* --- Contenu Principal --- */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px); /* Hauteur moins nav et footer */
+    padding: 40px 20px;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    border-top: 5px solid var(--primary);
+}
+
+.card h2 {
+    color: var(--dark);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.card p {
+    line-height: 1.6;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* --- Animations --- */
+.fade-in {
+    animation: fadeInAnim 0.8s forwards;
+}
+
+@keyframes fadeInAnim {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

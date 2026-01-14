@@ -3,14 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Mon Portfolio BTS SIO | Volley Edition</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-</body>
-<footer>
-    <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
-</footer>
+    <section id="hero-section">
+        <div class="intro-text">
+            <h1>PORTFOLIO de Théo Morchoisne</h1>
+            <p>Développeur SLAM - BTS SIO</p>
+            <span class="hint">Clique sur le ballon pour servir</span>
+            <img src="Sio-bleu-ethernet-fond.png" alt="Logo SIO" class="icon">
+        </div>
 
+        <div class="court-container">
+            <div id="ball" class="volleyball"></div>
+            <div class="net"></div>
+        </div>
+    </section>
+
+    <section id="portfolio-section" class="hidden">
+        <nav class="top-nav">
+            <div class="logo"><img src="Sio-bleu-ethernet-fond.png" alt="Logo SIO" class="icon"></div>
+            
+            <div class="dropdown-container">
+                <label for="page-select"></label>
+                <select id="page-select" onchange="navigateToPage(this.value)">
+                    <option value="" disabled selected>Choisir une section</option>
+                    <option value="accueil">Retour Accueil</option>
+                    <option value="projets">Mes Projets (E4)</option>
+                    <option value="competences">Compétences</option>
+                    <option value="veille">Veille Techno</option>
+                    <option value="contact">Contact</option>
+                </select>
+            </div>
+        </nav>
+
+        <main class="content">
+            <div class="card">
+                <h2>Bienvenue dans mon Portfolio</h2>
+                <p>Le service a été effectué avec succès !</p>
+                <p>Utilisez le menu en haut à droite pour naviguer entre mes projets de BTS SIO et mes compétences en développement.</p>
+            </div>
+        </main>
+    </section>
+
+    <script>
+        const ball = document.getElementById('ball');
+        const hero = document.getElementById('hero-section');
+        const portfolio = document.getElementById('portfolio-section');
+
+        // Gérer le clic sur le ballon
+        ball.addEventListener('click', () => {
+            ball.classList.add('is-served');
+
+            // Transition vers le portfolio après l'animation du ballon
+            setTimeout(() => {
+                hero.classList.add('slide-up');
+                portfolio.classList.remove('hidden');
+                portfolio.classList.add('fade-in');
+            }, 800);
+        });
+
+        // Gérer la navigation via la liste déroulante
+        function navigateToPage(destination) {
+    if (destination === "accueil") {
+        // Si tu veux revenir au début de l'animation de la même page
+        location.reload(); 
+    } else if (destination) {
+        // Redirige vers le fichier html correspondant (ex: projets.html)
+        window.location.href = destination + ".html";
+    }
+}
+        
+    </script>
+</body>
 </html>
