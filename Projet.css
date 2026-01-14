@@ -1,10 +1,9 @@
 /* --- Variables et Bases --- */
 :root {
-    --primary: #00d2ff;     /* Bleu clair Tech */
-    --secondary: #3a7bd5;   /* Bleu plus soutenu */
-    --dark: #1a1a2e;        /* Fond sombre */
-    --text-dark: #333333;
-    --light-bg: #f4f7f6;    /* Fond clair pour le contenu */
+    --primary: #00d2ff;
+    --dark: #1a1a2e;
+    --white: #ffffff;
+    --light-bg: #f4f7f6;
 }
 
 body, html {
@@ -12,8 +11,10 @@ body, html {
     padding: 0;
     font-family: 'Poppins', sans-serif;
     background-color: var(--light-bg);
-    color: var(--text-dark);
-    height: 100%;
+    color: #333;
+    height: 100vh; /* Fixe la hauteur sur la vue */
+    width: 100vw;
+    overflow: hidden; /* Empêche le scroll global pour figer le footer */
 }
 
 /* --- Barre de Navigation --- */
@@ -21,72 +22,80 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
+    padding: 0 5vw; /* Padding horizontal proportionnel */
     background: var(--dark);
-    height: 10vh; /* Hauteur fixe pour la nav */
+    height: 10vh;   /* 10% de la hauteur de l'écran */
     color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
+    position: relative; /* Changé de sticky à relative pour le calcul flex */
     z-index: 1000;
 }
 
-/* Ton Logo en haut à gauche */
+/* Ton Logo s'adapte à la hauteur de la nav */
 .icon {
-    width: 150px; /* Taille demandée */
-    height: auto;
+    height: 7vh; 
+    width: auto;
     display: block;
 }
 
 /* --- Menu Déroulant (Dropdown) --- */
-.dropdown-container {
-    display: flex;
-    align-items: center;
-}
-
 #page-select {
-    padding: 10px 15px;
+    padding: 1vh 1vw; /* Espacement proportionnel */
     border-radius: 8px;
     border: 2px solid var(--primary);
     background-color: #252545;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
+    font-size: 0.9rem;
 }
 
-
-/* --- Contenu Principal --- */
+/* --- Contenu Principal (Le conteneur 2x2) --- */
 .content {
     display: flex;
+    flex-wrap: wrap;       /* Autorise les deux lignes */
     justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 140px); /* Hauteur moins nav et footer */
-    padding: 40px 20px;
+    align-items: center;   /* Centre les cartes verticalement */
+    height: 85vh;          /* Occupe tout l'espace entre nav et footer */
+    gap: 2vw;              /* Espace entre les box proportionnel à la largeur */
+    padding: 2vh 5vw;
+    box-sizing: border-box;
 }
 
-.card {
+/* --- Les Cartes (Format 2x2 Fixe) --- */
+/* Note: Si tu as carde, cardf, cardg, cardh, ajoute-les ici */
+.card, .carde, .cardf, .cardg, .cardh {
     background: white;
-    padding: 40px;
+    padding: 2vh 2vw;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
     border-top: 5px solid var(--primary);
+    
+    /* LA CLÉ : 42% de la largeur pour forcer 2 par ligne */
+    flex: 0 0 42vw; 
+    
+    /* Hauteur calculée pour que 2 lignes tiennent dans les 85vh */
+    height: 35vh; 
+    
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow-y: auto; /* Scroll interne si le texte est trop long */
 }
 
 .card h2 {
     color: var(--dark);
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 1.4rem; /* Taille plus stable */
+    margin-bottom: 1vh;
 }
 
 .card p {
-    line-height: 1.6;
+    line-height: 1.4;
     color: #666;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin: 0;
 }
 
 /* --- Footer --- */
@@ -94,13 +103,12 @@ footer {
     background: var(--dark);
     color: white;
     text-align: center;
-    padding: 20px 0;
-    font-size: 0.9rem;
-}
-
-footer p {
-    margin: 0;
-    letter-spacing: 1px;
+    height: 5vh; /* 5% de la hauteur de l'écran */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    width: 100%;
 }
 
 /* --- Animations --- */
@@ -109,51 +117,6 @@ footer p {
 }
 
 @keyframes fadeInAnim {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(2vh); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Organisation des cours --- */
-.courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colonnes adaptatives */
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.course-category {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 5px solid var(--primary); /* Rappel de la couleur bleue */
-    text-align: left;
-    transition: transform 0.3s ease;
-}
-
-.course-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.course-category h3 {
-    margin-top: 0;
-    color: var(--dark);
-    font-size: 1.2rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-}
-
-.course-category ul {
-    list-style: none;
-    padding: 0;
-}
-
-.course-category li {
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-    color: #555;
-}
-
-.course-category li strong {
-    color: var(--secondary);
 }

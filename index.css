@@ -2,6 +2,7 @@
     --primary: #00d2ff;
     --dark: #1a1a2e;
     --white: #ffffff;
+    --light-bg: #f4f7f6; /* Ajouté pour la cohérence */
 }
 
 body, html {
@@ -9,8 +10,10 @@ body, html {
     padding: 0;
     font-family: 'Poppins', sans-serif;
     background-color: var(--light-bg);
-    color: var(--text-dark);
+    color: #333;
     height: 100%;
+    width: 100%;
+    overflow: hidden; /* Empêche le scroll global pour garder le footer fixe */
 }
 
 #hero-section {
@@ -25,7 +28,7 @@ body, html {
     z-index: 2;
 }
 
-.intro-text { text-align: center; margin-bottom: 15vh; color: white; }
+.intro-text { text-align: center; margin-bottom: 10vh; color: white; }
 .intro-text h1 { font-size: 3.5rem; margin: 0; }
 .hint { color: var(--primary); animation: blink 1.5s infinite; }
 
@@ -38,7 +41,7 @@ body, html {
     align-items: center;
 }
 
-/* LE FILET (Derrière le ballon) */
+/* LE FILET */
 .net {
     width: 70%;
     height: 15vh;
@@ -47,70 +50,134 @@ body, html {
                       linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%);
     background-size: 15px 15px;
     position: absolute;
-    top: -5vh; /* On le remonte un peu pour l'effet de profondeur */
+    top: -5vh; 
     z-index: 1;
 }
 
-/* LE BALLON (Au premier plan) */
+/* LE BALLON */
 .volleyball {
-    width: 100px;
-    height: 100px;
-    max-width: 130px;
-    min-width: 80px;
+    width: 10vh; /* Proportionnel à la hauteur de l'écran */
+    height: 10vh;
+    max-width: 120px;
+    min-width: 70px;
     background: radial-gradient(circle at 30% 30%, #fff, #bbb);
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     border: 2px solid #333;
-    z-index: 5; /* Force le passage devant le filet */
+    z-index: 5;
     transition: transform 0.2s;
 }
-
 
 .volleyball:hover { transform: scale(1.1); }
 
 /* ANIMATION */
-.is-served {
-    animation: servePath 1s forwards ease-in;
-}
+.is-served { animation: servePath 1s forwards ease-in; }
 
 @keyframes servePath {
     0% { transform: scale(1) translateY(0); }
-    20% { transform: scale(1.1) translateY(40px); } /* Préparation du smash */
-    100% { transform: scale(0.1) translateY(-1200px); opacity: 0; }
+    20% { transform: scale(1.1) translateY(4vh); } 
+    100% { transform: scale(0.1) translateY(-120vh); opacity: 0; }
 }
 
 /* NAVIGATION PORTFOLIO */
 #portfolio-section {
     position: absolute;
-    top: 0; width: 100%; height: 100vh;
-    background: #f4f7f6; z-index: 1;
-    display: flex; flex-direction: column;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #f4f7f6;
+    z-index: 1;
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden;
 }
 
 .top-nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 5%; background: var(--dark); height: 10vh;
-}
-
-.dropdown-container {
-    display: flex;
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
+    padding: 0 5%; 
+    background: var(--dark); 
+    height: 10vh; /* 10% de la hauteur */
+    box-sizing: border-box;
 }
 
 #page-select {
-    padding: 10px 15px;
+    padding: 1vh 1vw;
     border-radius: 8px;
     border: 2px solid var(--primary);
     background-color: #252545;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
     outline: none;
 }
 
+/* 1. Le conteneur doit permettre le passage à la ligne */
+.content {
+    flex: 1; 
+    display: flex;
+    flex-wrap: wrap;       /* Autorise le 2x2 */
+    justify-content: center; 
+    align-items: center; 
+    gap: 2vw;             /* Espace réduit pour que tout rentre */
+    padding: 2vh 5vw; 
+    overflow: hidden;      /* On interdit le scroll ici pour protéger le footer */
+}
 
+/* 2. On force la largeur à un peu moins de 50% pour en caser deux */
+.card, .carde, .cardf, .cardg, .cardh {
+    background: white;
+    padding: 2vh;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-top: 5px solid var(--primary);
+    
+    /* LA CLÉ DU 2x2 : 45% de largeur et hauteur limitée */
+    flex: 0 0 28%;         
+    height: 30vh;          /* Hauteur fixe pour que 2 lignes = ~80vh */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    overflow-y: auto;      /* Scroll interne si trop de texte */
+    transition: transform 0.3s ease;
+}
+
+/* Optimisation des titres pour le format 2x2 */
+.card h2, .carde h2, .cardf h2, .cardg h2, .cardh h2 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.card p, .carde p, .cardf p, .cardg p, .cardh p {
+    font-size: 0.9rem;
+}
+
+/* Effet au survol pour les deux */
+.card:hover, .carde:hover, .cardf:hover, .cardg:hover, .cardh:hover {
+    transform: translateY(-10px);
+}
+
+.icon {
+    height: 7vh; /* S'adapte à la barre de nav */
+    width: auto;
+    display: block;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    height: 5vh; /* Hauteur fixe de 5% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    width: 100%;
+}
 
 .hidden { display: none; }
 .slide-up { transform: translateY(-100%); }
@@ -118,9 +185,3 @@ body, html {
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-.icon {
-    width: 150px; /* Taille demandée */
-    height: auto;
-    display: block;
-}
