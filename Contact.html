@@ -3,67 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="Contact.css">
+    <title>Contact | Théo Morchoisne</title>
+    <link rel="stylesheet" href="Contact.css"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-        <section id="portfolio-section">
+
+    <section id="portfolio-section">
         <nav class="top-nav">
-            <div class="logo">
-                <img src="Sio-bleu-ethernet-fond.png" alt="Logo SIO" class="icon">
-            </div>
-            
+            <div class="logo"><img src="Sio-bleu-ethernet-fond.png" alt="Logo SIO" class="icon"></div>
             <div class="dropdown-container">
-                <select id="page-select" onchange="navigateToPage(this.value)">
-                    <option value="" disabled selected>Choisir une section</option>
+                <select id="page-select" onchange="window.location.href=this.value + '.html'">
+                    <option value="" disabled selected>Contact</option>
                     <option value="index">Retour Accueil</option>
-                    <option value="projets">Mes Projets (E4)</option>
+                    <option value="projets">Mes Projets</option>
                     <option value="competences">Compétences</option>
                     <option value="veille">Veille Techno</option>
-                    <option value="contact">Contact</option>
                 </select>
             </div>
         </nav>
 
         <main class="content">
-            <div class="card fade-in">
-                <h2>Mes Compétences</h2>
-                <p>En tant qu'étudiant en BTS SIO option SLAM, je développe des compétences en conception et développement d'applications.</p>
-                
-                <div style="margin-top: 20px; text-align: left;">
-                    <ul>
-                        <li>Développement Web (HTML, CSS, JS, PHP)</li>
-                        <li>Programmation Objet (C#, Java)</li>
-                        <li>Gestion de bases de données (SQL)</li>
-                    </ul>
-                </div>
-            </div>
-        </main>
+    <div class="card">
+        <img src="GitHub.png" alt="Logo Github" class="logo">
+        <h2>GitHub</h2>
+        <p>Lien vers mon Github</p>
+        <a target="_blank" href="https://github.com/Theo0743" class="contact-link">Voir Profil</a>
+    </div>
+    
+    <div class="carde">
+        <img src="linkedin.png" alt="Logo LinkedIn" class="logo">   
+        <h2>LinkedIn</h2>
+        <p>Cliquez pour voir mon profil professionnel.</p>
+        <a target="_blank" href="https://www.linkedin.com/in/th%C3%A9o-morchoisne-272366254/" class="contact-link">Voir Profil</a>
+    </div>
+
+    <div class="cardf">
+        <img src="mail.png" alt="Logo Mail" class="logo">
+        <h2>Mail</h2>
+        <p>Envoyez-moi un message direct.</p>
+        <a href="mailto:morchoisnetheo07@gmail.com" class="contact-link">morchoisnetheo07@gmail.com</a>
+    </div>
+</main>
+
+        <footer>
+            <p>&copy; 2026 Portfolio appartenant à Théo Morchoisne. Tous droits réservés.</p>
+        </footer>
     </section>
 
-    <footer>
-        <p>&copy; 2024 - Portfolio BTS SIO SLAM</p>
-    </footer>
-
-    <script>
-        function navigateToPage(destination) {
-            console.log("Option sélectionnée : " + destination);
-            
-            if (!destination) return;
-
-            // Si c'est l'accueil, on vise index.html (ton fichier avec le ballon)
-            if (destination === "index" || destination === "accueil") {
-                window.location.href = "index.html";
-            } else {
-                // Sinon on vise le nom_du_fichier.html
-                console.log("Redirection vers : " + destination + ".html");
-                window.location.href = destination + ".html";
-            }
-        }
-    </script>
 </body>
-<footer>
-    <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
-</footer>
-
 </html>

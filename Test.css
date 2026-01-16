@@ -1,0 +1,118 @@
+/* --- Bases et Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* --- Navigation --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 50px;
+}
+
+#page-select {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid #007bff;
+    background: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+/* --- Contenu Principal --- */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- Styles des Cartes --- */
+.card, .carde, .cardf {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover, .carde:hover, .cardf:hover {
+    transform: translateY(-5px);
+}
+
+.card h2, .carde h2, .cardf h2 {
+    margin-bottom: 15px;
+    color: #0056b3;
+}
+
+.card p {
+    color: #666;
+}
+
+/* Style spécifique pour les icônes dans les cartes contact */
+.carde .logo, .cardf .logo {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+/* --- Boutons/Liens de contact --- */
+.contact-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.contact-link:hover {
+    background-color: #0056b3;
+}
+
+/* --- Pied de page --- */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .top-nav {
+        padding: 15px 20px;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+}

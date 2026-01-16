@@ -41,35 +41,45 @@
 
         <main class="content">
             <div class="card">
-                <h2>Bienvenue dans mon Portfolio</h2>
-                <p>Le service a été effectué avec succès !</p>
-                <p>Utilisez le menu en haut à droite pour naviguer entre mes projets de BTS SIO et mes compétences en développement.</p>
+                <img src="Bloop.png" alt="PDP" class="profile-pic">
+                <h2>Mes Projets</h2>
+                <p>Vous pouvez accéder à mes projets réalisés</p>
+                <p>En plus des cours généraux (Mathc pour l'informatique, Anglais, CGE, CEJM), nous avons eu plusieurs projets à rendre.</p>
+                <a href="Projets.html" class="contact-link">Voir mes projets</a>
             </div>
             <div class="carde">
-                <h2>Bienvenue dans mon Portfolio</h2>
-                <p>Le service a été effectué avec succès !</p>
-                <p>Utilisez le menu en haut à droite pour naviguer entre mes projets de BTS SIO et mes compétences en développement.</p>
+                <img src="PDP.jpg" alt="PDP" class="profile-pic">
+                <h2>Morchoisne Théo</h2>
+                <p>Etudiant en 2ème année de BTS SIO option SLAM à Saint-Luc</p>
+                <p>Actuellement en cours de validation de mon BTS, je me projette pour l'après BTS et je recherche donc une Alternance</p>
+                <a href="#" class="contact-link">Voici mon expérience + CV</a>
             </div>
             <div class="cardf">
-                <h2>Bienvenue dans mon Portfolio</h2>
-                <p>Le service a été effectué avec succès !</p>
-                <p>Utilisez le menu en haut à droite pour naviguer entre mes projets de BTS SIO et mes compétences en développement.</p>
+                <img src="competences.jpg" alt="competences" class="profile-pic">
+                <h2>Mes Compétences</h2>
+                <p>Vouloir faire de l'informatique c'est bien, le connaitre c'est mieux</p>
+                <p>Avec ces technologies utilisées j'ai pu les apprendre et réaliser mes projets</p>
+                <a href="Competences.html" class="contact-link">Mes compétences</a>
             </div>
             <div class="cardg">
-                <h2>Bienvenue dans mon Portfolio</h2>
-                <p>Le service a été effectué avec succès !</p>
-                <p>Utilisez le menu en haut à droite pour naviguer entre mes projets de BTS SIO et mes compétences en développement.</p>
+                <img src="contact.png" alt="Contact" class="profile-pic">
+                <h2>Contact</h2>
+                <p>Vous cherchez à contacter botre prochaine alternant ?</p>
+                <p>Si vous cherchez à me contacter pour une Alternance ou autre demande n'hesitez pas</p>
+                <a href="Contact.html" class="contact-link">Me contacter</a>
             </div>
             <div class="cardh">
-                <h2>Bienvenue dans mon Portfolio</h2>
-                <p>Le service a été effectué avec succès !</p>
-                <p>Utilisez le menu en haut à droite pour naviguer entre mes projets de BTS SIO et mes compétences en développement.</p>
+                <img src="veille.jpg" alt="veille" class="profile-pic">
+                <h2>Veille Technologique</h2>
+                <p>Point important pour apprendre et évoluer avec le nouvelle technologie</p>
+                <p>Vous pouvez accéder aux articles qui me parle le plus</p>
+                <a href="veille.html" class="contact-link">Ma sélection</a>
             </div>
-            <footer>
+            
+        </main>
+        <footer>
                 <p>&copy; 2026 Portfolio appartenant à Théo Morchoisne. Tous droits réservés.</p>
             </footer>
-        </main>
-        
     </section>
         
     <script>
@@ -81,27 +91,30 @@
         ball.addEventListener('click', () => {
             ball.classList.add('is-served');
 
-            // Transition vers le portfolio après l'animation du ballon
-            setTimeout(() => {
-                hero.classList.add('slide-up');
-                portfolio.classList.remove('hidden');
-                portfolio.classList.add('fade-in');
-            }, 800);
-        });
+            // 2. On fait monter le terrain de volley (Hero)
+    setTimeout(() => {
+        hero.classList.add('slide-up');
+    }, 600); // Le terrain commence à monter un peu avant la fin du smash
+
+    // 3. On affiche le portfolio (et donc le menu)
+    setTimeout(() => {
+        portfolio.classList.remove('hidden');
+        portfolio.classList.add('fade-in');
+        // Optionnel : on empêche le scroll sur le body pendant l'anim
+        document.body.style.overflow = "hidden";
+    }, 1000); // Apparaît juste après que le terrain a fini de monter
+});
 
         // Gérer la navigation via la liste déroulante
         function navigateToPage(destination) {
     if (destination === "accueil") {
-        // Si tu veux revenir au début de l'animation de la même page
+        // Si tu veux revenir au début de l'animation de la même page²
         location.reload(); 
     } else if (destination) {
         // Redirige vers le fichier html correspondant (ex: projets.html)
         window.location.href = destination + ".html";
     }
-}
-        
+}  
     </script>
 </body>
-
-
 </html> 

@@ -2,100 +2,122 @@
 :root {
     --primary: #00d2ff;
     --dark: #1a1a2e;
-    --white: #ffffff;
     --light-bg: #f4f7f6;
 }
-
-body, html {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--light-bg);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     color: #333;
-    height: 100vh; /* Fixe la hauteur sur la vue */
-    width: 100vw;
-    overflow: hidden; /* Empêche le scroll global pour figer le footer */
+    line-height: 1.6;
+    min-height: 100vh;
 }
 
-/* --- Barre de Navigation --- */
+/* --- Navigation --- */
 .top-nav {
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
-    padding: 0 5vw; /* Padding horizontal proportionnel */
-    background: var(--dark);
-    height: 10vh;   /* 10% de la hauteur de l'écran */
-    color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative; /* Changé de sticky à relative pour le calcul flex */
-    z-index: 1000;
+    padding: 0 5vw; 
+    background: var(--dark); 
+    height: 10vh;
+    box-sizing: border-box;
 }
 
-/* Ton Logo s'adapte à la hauteur de la nav */
 .icon {
-    height: 7vh; 
+    height: 4vh !important; 
     width: auto;
-    display: block;
 }
 
-/* --- Menu Déroulant (Dropdown) --- */
 #page-select {
-    padding: 1vh 1vw; /* Espacement proportionnel */
+    padding: 1vh 1vw;
     border-radius: 8px;
     border: 2px solid var(--primary);
     background-color: #252545;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    font-size: 0.9rem;
 }
 
-/* --- Contenu Principal (Le conteneur 2x2) --- */
+/* --- Contenu Principal (Grille) --- */
 .content {
     display: flex;
-    flex-wrap: wrap;       /* Autorise les deux lignes */
-    justify-content: center;
-    align-items: center;   /* Centre les cartes verticalement */
-    height: 85vh;          /* Occupe tout l'espace entre nav et footer */
-    gap: 2vw;              /* Espace entre les box proportionnel à la largeur */
-    padding: 2vh 5vw;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
+    height: 85vh;
+    gap: 2vw; 
+    padding: 2vh 5vw; 
     box-sizing: border-box;
 }
 
-/* --- Les Cartes (Format 2x2 Fixe) --- */
-/* Note: Si tu as carde, cardf, cardg, cardh, ajoute-les ici */
-.card, .carde, .cardf, .cardg, .cardh {
+/* --- Cartes --- */
+.card, .carde, .cardf {
     background: white;
-    padding: 2vh 2vw;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 3vh 2vw;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     border-top: 5px solid var(--primary);
-    
-    /* LA CLÉ : 42% de la largeur pour forcer 2 par ligne */
-    flex: 0 0 42vw; 
-    
-    /* Hauteur calculée pour que 2 lignes tiennent dans les 85vh */
-    height: 35vh; 
-    
-    text-align: center;
+    flex: 0 0 28vw; 
+    height: 38vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     box-sizing: border-box;
-    overflow-y: auto; /* Scroll interne si le texte est trop long */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card h2 {
+/* --- Taille des Images (C'est ici que ça se règle) --- */
+.logo {
+    height: 3vh !important;   /* Force la petite taille */
+    width: auto;
+    max-width: 60px;
+    margin-bottom: 1.5vh;
+    display: block;
+    object-fit: contain;
+}
+/* Cible précisément l'image avec la classe logo */
+img.logo {
+    height: 4vh !important; /* Ajustez cette valeur en pixels pour réduire */
+    width: auto;
+    max-width: 75%;
+    margin-bottom: 1.5vh;
+    display: block;
+    object-fit: contain;
+}
+/* --- Liens de contact (Boutons) --- */
+.contact-link {
+    margin-top: 2vh;
+    padding: 1vh 1.5vw;
+    background: var(--dark);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border: 1px solid var(--primary);
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    background: var(--primary);
     color: var(--dark);
-    font-size: 1.4rem; /* Taille plus stable */
-    margin-bottom: 1vh;
 }
 
-.card p {
-    line-height: 1.4;
-    color: #666;
-    font-size: 1rem;
-    margin: 0;
+/* --- Effets au Survol --- */
+.card:hover, .carde:hover, .cardf:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 210, 255, 0.2);
+}
+
+.card:hover .icon, .carde:hover .icon, .cardf:hover .icon {
+    transform: scale(1.1);
 }
 
 /* --- Footer --- */
@@ -103,7 +125,7 @@ footer {
     background: var(--dark);
     color: white;
     text-align: center;
-    height: 5vh; /* 5% de la hauteur de l'écran */
+    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,12 +133,7 @@ footer {
     width: 100%;
 }
 
-/* --- Animations --- */
-.fade-in {
-    animation: fadeInAnim 0.8s forwards;
-}
 
-@keyframes fadeInAnim {
-    from { opacity: 0; transform: translateY(2vh); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* --- Animations --- */
+.fade-in { animation: fadeIn 1s forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
