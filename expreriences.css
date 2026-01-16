@@ -1,0 +1,126 @@
+/* --- Variables --- */
+:root {
+    --primary: #00d2ff;
+    --dark: #1a1a2e;
+    --white: #ffffff;
+    --light-bg: #f4f7f6;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navigation --- */
+.top-nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 5vw; 
+    background: var(--dark); 
+    height: 10vh;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center; /* Centre le logo verticalement dans la nav */
+}
+
+.icon {
+    height: 7vh; 
+    width: auto;
+}
+
+/* --- Layout 2 Colonnes --- */
+.content {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50% / 50% */
+    gap: 40px;
+    padding: 40px 5vw;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: start; /* Les colonnes ne s'étirent pas si l'une est plus courte */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.column-title {
+    text-align: center;
+    color: var(--dark);
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* --- Les Cartes --- */
+/* 1. Assurez-vous que la transition est bien sur la classe .card */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid var(--primary);
+    text-align: center;
+    
+    /* On ajoute explicitement la transition ici */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    
+    /* Empêche l'animation de bloquer le survol après la fin */
+    animation-fill-mode: forwards; 
+}
+
+/* 2. Utilisez !important si nécessaire pour écraser l'état final de l'animation */
+.card:hover {
+    transform: translateY(-10px) !important; 
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3) !important;
+    cursor: pointer;
+}
+
+.card-logo {
+    height: 60px; /* Taille contrôlée pour les logos STAPS/PDZ */
+    width: auto;
+    margin-bottom: 15px;
+}
+
+
+/* --- Footer --- */
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 850px) {
+    .content {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+    }
+}
+
+/* Animation */
+.fade-in {
+    animation: fadeInAnim 0.8s ease-out forwards;
+}
+@keyframes fadeInAnim {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

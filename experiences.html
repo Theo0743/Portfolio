@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Expériences & Formations</title>
+    <link rel="stylesheet" href="expreriences.css">
+</head>
+<body>
+    <section id="portfolio-section">
+        <nav class="top-nav">
+            <div class="logo">
+                <img src="Sio-bleu-ethernet-fond.png" alt="Logo SIO" class="icon">
+            </div>
+            
+            <div class="dropdown-container">
+                <select id="page-select" onchange="navigateToPage(this.value)">
+                    <option value="" disabled selected>Choisir une section</option>
+                    <option value="index">Retour Accueil</option>
+                    <option value="projets">Mes Projets (E4)</option>
+                    <option value="competences">Compétences</option>
+                    <option value="experiences">Formations</option>
+                    <option value="veille">Veille Techno</option>
+                    <option value="contact">Contact</option>
+                </select>
+            </div>
+        </nav>
+
+        <main class="content">
+            <div class="column">
+                <h2 class="column-title">Expériences Pro</h2>
+
+                <div class="card fade-in">
+                    <img src="Logo-Nord.png" alt="Logo Departement du Nord" class="card-logo">
+                    <h2>Stage 2nd année de BTS</h2>
+                    <h3>05 janvier 2026 - 06 février 2026</h3>
+                    <p>[En cours de rédaction]</p>
+                </div>
+
+                <div class="card fade-in">
+                    <img src="logo-3erl.webp" alt="Logo Service Civique" class="card-logo">
+                    <h2>Stage 1er année de BTS</h2>
+                    <h3>12 mai 2025 - 13 juin 2025</h3>
+                    <p>Automatisation - Développement - Programmation</p>
+                </div>
+                
+                <div class="card fade-in">
+                    <img src="Logo-Servicecivique.png" alt="Logo Service Civique" class="card-logo"><img src="Cambrai.png" alt="Logo Cambrai" class="card-logo">
+                    <h2>Service Civique</h2>
+                    <h3>Septembre 2023 - Juin 2024</h3>
+                    <p>Educateur - Arbitrage - Gestion événementielle - Organisation</p>
+                </div>
+
+                <div class="card fade-in">
+                    <img src="auchan.jpg" alt="Logo Auchan" class="card-logo"><img src="logo-carrefour.png" alt="Logo Carrefour" class="card-logo">
+                    <h2>Employé saisonnier</h2>
+                    <h3>Depuis 2021</h3>
+                    <p>Gestion - Rayonnage - Maintenance - Service Clientèle </p>
+                </div>
+
+            </div>
+
+            <div class="column">
+                <h2 class="column-title">Formations</h2>
+
+                <div class="card fade-in">
+                    <img src="Sio-bleu-ethernet-fond.png" alt="Logo BTS" class="card-logo">
+                    <h2>BTS SIO Option SLAM</h2>
+                    <h3>Septembre 2024 - Juillet 2026</h3>
+                    <p>Lycée professionnel Saint-Luc, Cambrai</p>
+                </div>
+
+                <div class="card fade-in">
+                    <img src="STAPS.png" alt="Logo STAPS" class="card-logo">
+                    <h2>Licence en STAPS</h2>
+                    <h3>Septembre 2021 - Juillet 2024</h3>
+                    <p>Université Polytechnique HDF, Valenciennes</p>
+                </div>
+
+                <div class="card fade-in">
+                    <img src="logoPDZ.jpeg" alt="Logo PDZ" class="card-logo">
+                    <h2>Bac général option Mathématique et SVT</h2>
+                    <h3>Septembre 2018 - Juillet 2021</h3>
+                    <p>Lycée Paul Duez, Cambrai</p>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Portfolio appartenant à Théo Morchoisne. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        function navigateToPage(destination) {
+            if (!destination) return;
+            window.location.href = (destination === "index") ? "index.html" : destination + ".html";
+        }
+    </script>
+</body>
+</html>
