@@ -20,28 +20,42 @@ body {
 /* --- Navigation --- */
 .top-nav {
     display: flex; 
-    justify-content: space-between; 
+    justify-content: space-between; /* Pousse .logo à gauche et .nav-links à droite */
     align-items: center;
     padding: 0 5vw; 
     background: var(--dark); 
     height: 10vh;
     box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Conteneur des liens */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Espace entre chaque lien */
+}
+
+/* Style des liens */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary); /* Change de couleur au survol */
 }
 
 .icon {
-    height: 4vh !important; 
+    height: 7vh; 
     width: auto;
+    display: block;
 }
 
-#page-select {
-    padding: 1vh 1vw;
-    border-radius: 8px;
-    border: 2px solid var(--primary);
-    background-color: #252545;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
 
 /* --- Contenu Principal (Grille) --- */
 .content {
@@ -73,15 +87,6 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- Taille des Images (C'est ici que ça se règle) --- */
-.logo {
-    height: 3vh !important;   /* Force la petite taille */
-    width: auto;
-    max-width: 60px;
-    margin-bottom: 1.5vh;
-    display: block;
-    object-fit: contain;
-}
 /* Cible précisément l'image avec la classe logo */
 img.logo {
     height: 4vh !important; /* Ajustez cette valeur en pixels pour réduire */
@@ -119,7 +124,47 @@ img.logo {
 .card:hover .icon, .carde:hover .icon, .cardf:hover .icon {
     transform: scale(1.1);
 }
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
 
+.skill-category {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-bottom: 4px solid var(--primary);
+}
+
+.skill-item {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.skill-item span {
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Barre de progression */
+.bar {
+    background: #e0e0e0;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    background: var(--primary);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+}
 /* --- Footer --- */
 footer {
     background: var(--dark);

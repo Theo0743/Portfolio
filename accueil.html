@@ -4,24 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio BTS SIO | Volley Edition</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="accueil.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <section id="hero-section">
-        <div class="intro-text">
-            <h1>PORTFOLIO de Théo Morchoisne</h1>
-            <p>Développeur SLAM - BTS SIO</p>
-            <span class="hint">Clique sur le ballon pour servir</span>
-        </div>
-
-        <div class="court-container">
-            <div id="ball" class="volleyball"></div>
-            <div class="net"></div>
-        </div>
-    </section>
-
     <section id="portfolio-section" class="hidden">
         <nav class="top-nav">
             <div class="logo"><img src="Sio-bleu-ethernet-fond.png" alt="Logo SIO" class="icon"></div>
@@ -77,40 +63,5 @@
                 <p>&copy; 2026 Portfolio appartenant à Théo Morchoisne. Tous droits réservés.</p>
             </footer>
     </section>
-        
-    <script>
-        const ball = document.getElementById('ball');
-        const hero = document.getElementById('hero-section');
-        const portfolio = document.getElementById('portfolio-section');
-
-        // Gérer le clic sur le ballon
-        ball.addEventListener('click', () => {
-            ball.classList.add('is-served');
-
-            // 2. On fait monter le terrain de volley (Hero)
-    setTimeout(() => {
-        hero.classList.add('slide-up');
-    }, 600); // Le terrain commence à monter un peu avant la fin du smash
-
-    // 3. On affiche le portfolio (et donc le menu)
-    setTimeout(() => {
-        portfolio.classList.remove('hidden');
-        portfolio.classList.add('fade-in');
-        // Optionnel : on empêche le scroll sur le body pendant l'anim
-        document.body.style.overflow = "hidden";
-    }, 1000); // Apparaît juste après que le terrain a fini de monter
-});
-
-        // Gérer la navigation via la liste déroulante
-        function navigateToPage(destination) {
-    if (destination === "accueil") {
-        // Si tu veux revenir au début de l'animation de la même page²
-        location.reload(); 
-    } else if (destination) {
-        // Redirige vers le fichier html correspondant (ex: projets.html)
-        window.location.href = destination + ".html";
-    }
-}  
-    </script>
 </body>
 </html> 

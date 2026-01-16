@@ -19,7 +19,7 @@ body {
 /* --- Navigation --- */
 .top-nav {
     display: flex; 
-    justify-content: space-between; 
+    justify-content: space-between; /* Pousse .logo à gauche et .nav-links à droite */
     align-items: center;
     padding: 0 5vw; 
     background: var(--dark); 
@@ -28,6 +28,25 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+/* Conteneur des liens */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Espace entre chaque lien */
+}
+
+/* Style des liens */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary); /* Change de couleur au survol */
 }
 
 .logo {

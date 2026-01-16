@@ -12,17 +12,12 @@
             <div class="logo">
                 <img src="Sio-bleu-ethernet-fond.png" alt="Logo SIO" class="icon">
             </div>
-            
-            <div class="dropdown-container">
-                <select id="page-select" onchange="navigateToPage(this.value)">
-                    <option value="" disabled selected>Choisir une section</option>
-                    <option value="index">Retour Accueil</option>
-                    <option value="projets">Mes Projets (E4)</option>
-                    <option value="competences">Compétences</option>
-                    <option value="experiences">Formations</option>
-                    <option value="veille">Veille Techno</option>
-                    <option value="contact">Contact</option>
-                </select>
+            <div class="nav-links">
+                    <a href="accueil.html">Accueil</a>
+                    <a href="projets.html">Projets</a>
+                    <a href="competences.html">Compétences</a>
+                    <a href="veille.html">Veille</a>
+                    <a href="Contact.html">Contact</a>
             </div>
         </nav>
 
@@ -90,12 +85,5 @@
     <footer>
         <p>&copy; 2026 Portfolio appartenant à Théo Morchoisne. Tous droits réservés.</p>
     </footer>
-
-    <script>
-        function navigateToPage(destination) {
-            if (!destination) return;
-            window.location.href = (destination === "index") ? "index.html" : destination + ".html";
-        }
-    </script>
 </body>
 </html>

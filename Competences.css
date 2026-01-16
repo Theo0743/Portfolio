@@ -16,19 +16,37 @@ body, html {
     width: 100vw;
     overflow: hidden; /* Empêche le scroll global pour figer le footer */
 }
-
-/* --- Barre de Navigation --- */
+    
 .top-nav {
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
+    justify-content: space-between; /* Pousse .logo à gauche et .nav-links à droite */
     align-items: center;
-    padding: 0 5vw; /* Padding horizontal proportionnel */
-    background: var(--dark);
-    height: 10vh;   /* 10% de la hauteur de l'écran */
-    color: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: relative; /* Changé de sticky à relative pour le calcul flex */
+    padding: 0 5vw; 
+    background: var(--dark); 
+    height: 10vh;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
     z-index: 1000;
+}
+
+/* Conteneur des liens */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Espace entre chaque lien */
+}
+
+/* Style des liens */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary); /* Change de couleur au survol */
 }
 
 /* Ton Logo s'adapte à la hauteur de la nav */
