@@ -1,4 +1,4 @@
-/* --- Variables et Bases --- */
+/* --- 1. VARIABLES & BASES --- */
 :root {
     --primary: #00d2ff;
     --dark: #1a1a2e;
@@ -6,37 +6,37 @@
     --light-bg: #f4f7f6;
 }
 
-body, html {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     font-family: 'Poppins', sans-serif;
     background-color: var(--light-bg);
     color: #333;
-    height: 100vh; /* Fixe la hauteur sur la vue */
+    height: 100vh;
     width: 100vw;
-    overflow: hidden; /* Empêche le scroll global pour figer le footer */
+    overflow: hidden; /* Empêche le scroll de la page entière */
 }
-    
+
+/* --- 2. NAVIGATION --- */
 .top-nav {
     display: flex; 
-    justify-content: space-between; /* Pousse .logo à gauche et .nav-links à droite */
+    justify-content: space-between; 
     align-items: center;
     padding: 0 5vw; 
     background: var(--dark); 
     height: 10vh;
-    box-sizing: border-box;
-    position: sticky;
-    top: 0;
     z-index: 1000;
 }
 
-/* Conteneur des liens */
 .nav-links {
     display: flex;
-    gap: 20px; /* Espace entre chaque lien */
+    gap: 20px;
 }
 
-/* Style des liens */
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -46,95 +46,126 @@ body, html {
 }
 
 .nav-links a:hover {
-    color: var(--primary); /* Change de couleur au survol */
+    color: var(--primary);
 }
 
-/* Ton Logo s'adapte à la hauteur de la nav */
 .icon {
     height: 7vh; 
     width: auto;
-    display: block;
 }
 
-/* --- Menu Déroulant (Dropdown) --- */
-#page-select {
-    padding: 1vh 1vw; /* Espacement proportionnel */
-    border-radius: 8px;
-    border: 2px solid var(--primary);
-    background-color: #252545;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-/* --- Contenu Principal (Le conteneur 2x2) --- */
+/* --- 3. CONTENU (LES 3 COLONNES) --- */
 .content {
-    display: flex;
-    flex-wrap: wrap;       /* Autorise les deux lignes */
-    justify-content: center;
-    align-items: center;   /* Centre les cartes verticalement */
-    height: 85vh;          /* Occupe tout l'espace entre nav et footer */
-    gap: 2vw;              /* Espace entre les box proportionnel à la largeur */
-    padding: 2vh 5vw;
-    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    gap: 2vw;
+    height: 85vh; /* Espace entre nav et footer */
+    padding: 3vh 5vw;
+    overflow-y: auto; /* Permet de scroller les colonnes si beaucoup d'articles */
+    align-items: start;
 }
 
-/* --- Les Cartes (Format 2x2 Fixe) --- */
-/* Note: Si tu as carde, cardf, cardg, cardh, ajoute-les ici */
-.card, .carde, .cardf, .cardg, .cardh {
-    background: white;
-    padding: 2vh 2vw;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid var(--primary);
-    
-    /* LA CLÉ : 42% de la largeur pour forcer 2 par ligne */
-    flex: 0 0 42vw; 
-    
-    /* Hauteur calculée pour que 2 lignes tiennent dans les 85vh */
-    height: 35vh; 
-    
-    text-align: center;
+.column {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.column-title {
+    text-align: center;
+    color: var(--dark);
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--primary);
+    min-height: 60px; /* Aligne les titres même si le texte fait 2 lignes */
+    display: flex;
+    align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    overflow-y: auto; /* Scroll interne si le texte est trop long */
+    text-transform: uppercase;
+}
+
+/* --- 4. LES CARTES D'ARTICLES --- */
+.card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid var(--primary);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.2);
+}
+
+.card-logo {
+    height: 40px;
+    max-width: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .card h2 {
+    font-size: 1.1rem;
     color: var(--dark);
-    font-size: 1.4rem; /* Taille plus stable */
-    margin-bottom: 1vh;
+    margin-bottom: 5px;
+}
+
+.card h3 {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.card h3 a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card h3 a:hover {
+    text-decoration: underline;
 }
 
 .card p {
-    line-height: 1.4;
+    font-size: 0.9rem;
+    line-height: 1.5;
     color: #666;
-    font-size: 1rem;
-    margin: 0;
+    text-align: justify;
 }
 
-/* --- Footer --- */
+/* --- 5. FOOTER --- */
 footer {
     background: var(--dark);
     color: white;
     text-align: center;
-    height: 5vh; /* 5% de la hauteur de l'écran */
+    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     width: 100%;
 }
 
-/* --- Animations --- */
+/* --- 6. ANIMATIONS & RESPONSIVE --- */
 .fade-in {
-    animation: fadeInAnim 0.8s forwards;
+    animation: fadeInAnim 0.6s ease-out forwards;
 }
 
 @keyframes fadeInAnim {
-    from { opacity: 0; transform: translateY(2vh); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr; /* Une seule colonne sur tablette/mobile */
+        overflow-y: scroll;
+    }
+    body, html {
+        overflow-y: auto;
+    }
 }
