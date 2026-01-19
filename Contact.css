@@ -87,6 +87,8 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
+
 /* Cible précisément l'image avec la classe logo */
 img.logo {
     height: 4vh !important; /* Ajustez cette valeur en pixels pour réduire */

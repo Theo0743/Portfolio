@@ -1,4 +1,4 @@
-/* --- Variables et Bases --- */
+/* --- Variables & Bases --- */
 :root {
     --primary: #00d2ff;
     --dark: #1a1a2e;
@@ -6,37 +6,39 @@
     --light-bg: #f4f7f6;
 }
 
-body, html {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     font-family: 'Poppins', sans-serif;
     background-color: var(--light-bg);
     color: #333;
-    height: 100vh; /* Fixe la hauteur sur la vue */
-    width: 100vw;
-    overflow: hidden; /* Empêche le scroll global pour figer le footer */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* --- NAVIGATION --- */
 .top-nav {
     display: flex; 
-    justify-content: space-between; /* Pousse .logo à gauche et .nav-links à droite */
+    justify-content: space-between; 
     align-items: center;
     padding: 0 5vw; 
     background: var(--dark); 
     height: 10vh;
-    box-sizing: border-box;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Conteneur des liens */
 .nav-links {
     display: flex;
-    gap: 20px; /* Espace entre chaque lien */
+    gap: 20px;
 }
 
-/* Style des liens */
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -46,85 +48,128 @@ body, html {
 }
 
 .nav-links a:hover {
-    color: var(--primary); /* Change de couleur au survol */
+    color: var(--primary);
 }
 
-/* Ton Logo s'adapte à la hauteur de la nav */
 .icon {
     height: 7vh; 
     width: auto;
     display: block;
 }
 
-
-
-/* --- Contenu Principal (Le conteneur 2x2) --- */
+/* --- GRILLE DE CONTENU --- */
+/* --- Conteneur Principal --- */
+/* --- Conteneur Principal --- */
 .content {
+    flex: 1; 
     display: flex;
-    flex-wrap: wrap;       /* Autorise les deux lignes */
-    justify-content: center;
-    align-items: center;   /* Centre les cartes verticalement */
-    height: 85vh;          /* Occupe tout l'espace entre nav et footer */
-    gap: 2vw;              /* Espace entre les box proportionnel à la largeur */
+    flex-wrap: wrap;       
+    justify-content: center; 
+    /* IMPORTANT : stretch force les enfants à avoir la même hauteur sur une ligne */
+    align-items: stretch; 
+    gap: 2vw;             
     padding: 2vh 5vw;
-    box-sizing: border-box;
 }
 
-/* --- Les Cartes (Format 2x2 Fixe) --- */
-/* Note: Si tu as carde, cardf, cardg, cardh, ajoute-les ici */
-.card, .carde, .cardf, .cardg, .cardh {
+[class^="card"] {
     background: white;
-    padding: 2vh 2vw;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     border-top: 5px solid var(--primary);
     
-    /* LA CLÉ : 42% de la largeur pour forcer 2 par ligne */
-    flex: 0 0 42vw; 
-    
-    /* Hauteur calculée pour que 2 lignes tiennent dans les 85vh */
-    height: 35vh; 
-    
-    text-align: center;
+    flex: 0 1 28%; 
+    min-width: 300px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    overflow-y: auto; /* Scroll interne si le texte est trop long */
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-.card h2 {
-    color: var(--dark);
-    font-size: 1.4rem; /* Taille plus stable */
-    margin-bottom: 1vh;
+/* --- Responsive : 2 par ligne sur tablettes --- */
+@media (max-width: 1100px) {
+    [class^="card"] {
+        flex: 0 1 calc(50% - 30px);
+    }
 }
 
-.card p {
+/* --- Responsive : 1 par ligne sur mobile --- */
+@media (max-width: 700px) {
+    [class^="card"] {
+        flex: 0 1 100%;
+    }
+}
+
+.profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--primary);
+    padding: 3px;
+    background: white;
+}
+
+/* Typographie interne */
+[class^="card"] h2 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+[class^="card"] p {
     line-height: 1.4;
     color: #666;
     font-size: 1rem;
-    margin: 0;
+    margin-bottom: 20px;
+    flex-grow: 1; 
+}
+/* Effet au survol pour les deux */
+.card:hover, .carde:hover, .cardf:hover, .cardg:hover, .cardh:hover {
+    transform: translateY(-10px);
 }
 
-/* --- Footer --- */
+/* --- BOUTONS --- */
+.contact-link {
+    padding: 10px 20px;
+    background: var(--dark);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background: var(--primary);
+    color: var(--dark);
+    box-shadow: 0 0 15px var(--primary);
+}
+
+/* --- FOOTER --- */
 footer {
     background: var(--dark);
     color: white;
     text-align: center;
-    height: 5vh; /* 5% de la hauteur de l'écran */
+    height: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.85rem;
-    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* --- Animations --- */
+/* --- ANIMATIONS --- */
 .fade-in {
-    animation: fadeInAnim 0.8s forwards;
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
-@keyframes fadeInAnim {
-    from { opacity: 0; transform: translateY(2vh); }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+

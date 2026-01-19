@@ -31,55 +31,6 @@ body, html {
 .intro-text { text-align: center; margin-bottom: 10vh; color: white; }
 .intro-text h1 { font-size: 3.5rem; margin: 0; }
 .hint { color: var(--primary); animation: blink 1.5s infinite; }
-
-/* LE CONTENEUR DU TERRAIN */
-.court-container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* LE FILET */
-.net {
-    width: 70%;
-    height: 15vh;
-    border-top: 5px solid rgba(255,255,255,0.3);
-    background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%), 
-                      linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%);
-    background-size: 15px 15px;
-    position: absolute;
-    top: -5vh; 
-    z-index: 1;
-}
-
-/* LE BALLON */
-.volleyball {
-    width: 10vh; /* Proportionnel à la hauteur de l'écran */
-    height: 10vh;
-    max-width: 12vh;
-    min-width: 7vh;
-    background: radial-gradient(circle at 30% 30%, #fff, #bbb);
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    border: 2px solid #333;
-    z-index: 5;
-    transition: transform 0.2s;
-}
-
-.volleyball:hover { transform: scale(1.1); }
-
-/* ANIMATION */
-.is-served { animation: servePath 1s forwards ease-in; }
-
-@keyframes servePath {
-    0% { transform: scale(1) translateY(0); }
-    20% { transform: scale(1.1) translateY(4vh); } 
-    100% { transform: scale(0.1) translateY(-120vh); opacity: 0; }
-}
-
 /* NAVIGATION PORTFOLIO */
 #portfolio-section {
     position: absolute;
