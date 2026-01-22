@@ -18,7 +18,7 @@ body, html {
     color: #333;
     height: 100vh;
     width: 100vw;
-    overflow: hidden; /* Empêche le scroll de la page entière */
+    overflow: hidden;
 }
 
 /* --- 2. NAVIGATION --- */
@@ -32,112 +32,132 @@ body, html {
     z-index: 1000;
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
+.nav-links { display: flex; gap: 20px; }
 .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: 500;
     font-size: 0.9rem;
-    transition: color 0.3s ease;
+    transition: 0.3s;
 }
+.nav-links a:hover { color: var(--primary); }
+.icon { height: 7vh; width: auto; }
 
-.nav-links a:hover {
-    color: var(--primary);
-}
-
-.icon {
-    height: 7vh; 
-    width: auto;
-}
-
-/* --- 3. CONTENU (LES 3 COLONNES) --- */
+/* --- 3. CONTENU (CENTRAGE VERTICAL ET HORIZONTAL) --- */
 .content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
-    gap: 2vw;
-    height: 85vh; /* Espace entre nav et footer */
-    padding: 3vh 5vw;
-    overflow-y: auto; /* Permet de scroller les colonnes si beaucoup d'articles */
-    align-items: start;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3vw;
+    height: 85vh; /* Espace restant entre nav et footer */
+    padding: 0 5vw;
+    align-items: center; /* CENTRE VERTICALEMENT LES COLONNES */
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .column {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    height: 100%;
+    gap: 15px;
 }
 
 .column-title {
     text-align: center;
     color: var(--dark);
-    font-size: 1.1rem;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--primary);
-    min-height: 60px; /* Aligne les titres même si le texte fait 2 lignes */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* --- 4. LES CARTES D'ARTICLES --- */
+/* --- 4. LES CARTES --- */
 .card {
     background: var(--white);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    border-top: 4px solid var(--primary);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-top: 6px solid var(--primary);
+    text-align: center;
+    transition: all 0.3s ease;
+    min-height: 350px; /* Aligne la hauteur des cartes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 210, 255, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.2);
 }
 
 .card-logo {
-    height: 40px;
-    max-width: 100px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.card h2 {
-    font-size: 1.1rem;
-    color: var(--dark);
-    margin-bottom: 5px;
-}
-
-.card h3 {
-    font-size: 0.8rem;
+    height: 60px;
     margin-bottom: 10px;
 }
 
-.card h3 a {
+/* --- 5. LISTE DES COMPÉTENCES --- */
+.skills-list {
+    list-style: none;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.skills-list li {
+    padding: 8px 0;
+    font-size: 0.95rem;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 20px;
+}
+
+.skills-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
     color: var(--primary);
-    text-decoration: none;
     font-weight: bold;
 }
 
-.card h3 a:hover {
-    text-decoration: underline;
+.skills-list li:last-child {
+    border-bottom: none;
 }
 
-.card p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #666;
-    text-align: justify;
+.certif-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px; /* Espace vertical entre les lignes */
+    width: 100%;
 }
 
-/* --- 5. FOOTER --- */
+.certif-row {
+    display: flex;
+    justify-content: center; /* Centre les modules */
+    gap: 15px; /* C'EST ICI : l'espace horizontal entre Module 1 et Module 2 */
+}
+
+.certif-link {
+    text-decoration: none;
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--dark);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #eee;
+    transition: 0.3s;
+    flex: 1; /* Pour que les deux boutons fassent la même taille */
+    text-align: center;
+}
+
+.certif-link:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* --- 6. FOOTER --- */
 footer {
     background: var(--dark);
     color: white;
@@ -147,25 +167,25 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 0.8rem;
-    width: 100%;
 }
 
-/* --- 6. ANIMATIONS & RESPONSIVE --- */
+/* --- ANIMATIONS --- */
 .fade-in {
-    animation: fadeInAnim 0.6s ease-out forwards;
+    animation: fadeInAnim 0.8s ease-out forwards;
 }
 
 @keyframes fadeInAnim {
-    from { opacity: 0; transform: translateY(15px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .content {
-        grid-template-columns: 1fr; /* Une seule colonne sur tablette/mobile */
-        overflow-y: scroll;
-    }
-    body, html {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 50px 5vw;
         overflow-y: auto;
     }
+    body, html { overflow-y: auto; }
 }
