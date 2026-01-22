@@ -105,6 +105,65 @@ body {
     animation-fill-mode: forwards; 
 }
 
+.CV {
+    background: white;
+    padding: 20px 30px; /* Utilisation de px pour plus de contrôle sur le texte */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-top: 5px solid var(--primary);
+    
+    /* 1. Taille adaptée au contenu */
+    width: fit-content;  /* La largeur s'ajuste au texte */
+    height: auto;        /* La hauteur s'ajuste au contenu */
+    min-width: 200px;    /* Optionnel : évite que la box soit trop étroite */
+
+    /* 2. Centrage */
+    margin: 0 auto;      /* Centre horizontalement dans un flux classique */
+    margin-top: 20px    ; /* Espace au-dessus */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.CV:hover {
+    transform: translateY(-10px) scale(1.02); /* Soulève légèrement et agrandit à peine */
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3); /* Ombre plus diffuse et colorée */
+    cursor: pointer;
+}
+.contact-link {
+    margin-top: 2vh;
+    padding: 1vh 1.5vw;
+    background: var(--dark);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border: 1px solid var(--primary);
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    background: var(--primary);
+    color: var(--dark);
+}
+
+.CV p{
+    line-height: 1.4;
+    color: #666;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.profile-pic {
+    height: 12vh; /* Taille contrôlée pour les logos STAPS/PDZ */
+    width: auto;
+}
+
+
 /* 2. Utilisez !important si nécessaire pour écraser l'état final de l'animation */
 .card:hover {
     transform: translateY(-10px) !important; 
@@ -151,6 +210,7 @@ footer {
         grid-template-columns: 1fr; /* Une seule colonne sur mobile */
     }
 }
+
 
 /* Animation */
 .fade-in {
