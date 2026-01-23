@@ -14,12 +14,98 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    transition: background 0.3s ease, color 0.3s ease;
 }
+
+/* ===== STYLES MODE JOUR/NUIT ===== */
+.theme-toggle {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+}
+
+.theme-toggle:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+}
+
+body.dark-mode .top-nav {
+    background-color: #1e293b;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .nav-links a {
+    color: #e2e8f0;
+}
+
+body.dark-mode .nav-links a:hover {
+    color: var(--primary);
+}
+
+body.dark-mode .column-title {
+    color: #e2e8f0;
+    border-bottom-color: var(--primary);
+}
+
+body.dark-mode .card,
+body.dark-mode .CV {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card:hover,
+body.dark-mode .CV:hover {
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.4) !important;
+}
+
+body.dark-mode .card h2 {
+    color: #60a5fa;
+}
+
+body.dark-mode .card h3 {
+    color: var(--primary);
+}
+
+body.dark-mode .card p,
+body.dark-mode .CV p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .contact-link {
+    background-color: #1e293b;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+body.dark-mode .contact-link:hover {
+    background-color: var(--primary);
+    color: #1e293b;
+}
+
+body.dark-mode footer {
+    background-color: #1e293b;
+    color: #94a3b8;
+}
+
+/* ===== FIN STYLES MODE JOUR/NUIT ===== */
 
 /* --- Navigation --- */
 .top-nav {
     display: flex; 
-    justify-content: space-between; /* Pousse .logo à gauche et .nav-links à droite */
+    justify-content: space-between;
     align-items: center;
     padding: 0 5vw; 
     background: var(--dark); 
@@ -28,12 +114,14 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
 /* Conteneur des liens */
 .nav-links {
     display: flex;
-    gap: 20px; /* Espace entre chaque lien */
+    gap: 20px;
+    align-items: center;
 }
 
 /* Style des liens */
@@ -46,13 +134,13 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--primary); /* Change de couleur au survol */
+    color: var(--primary);
 }
 
 .logo {
     height: 100%;
     display: flex;
-    align-items: center; /* Centre le logo verticalement dans la nav */
+    align-items: center;
 }
 
 .icon {
@@ -64,14 +152,14 @@ body {
 .content {
     flex: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 50% / 50% */
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     padding: 40px 5vw;
     max-width: 1400px;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
-    align-items: start; /* Les colonnes ne s'étirent pas si l'une est plus courte */
+    align-items: start;
 }
 
 .column {
@@ -86,10 +174,10 @@ body {
     border-bottom: 3px solid var(--primary);
     padding-bottom: 10px;
     text-transform: uppercase;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 /* --- Les Cartes --- */
-/* 1. Assurez-vous que la transition est bien sur la classe .card */
 .card {
     background: white;
     padding: 25px;
@@ -97,42 +185,36 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-top: 5px solid var(--primary);
     text-align: center;
-    
-    /* On ajoute explicitement la transition ici */
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-    
-    /* Empêche l'animation de bloquer le survol après la fin */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease, color 0.3s ease;
     animation-fill-mode: forwards; 
 }
 
 .CV {
     background: white;
-    padding: 20px 30px; /* Utilisation de px pour plus de contrôle sur le texte */
+    padding: 20px 30px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     border-top: 5px solid var(--primary);
-    
-    /* 1. Taille adaptée au contenu */
-    width: fit-content;  /* La largeur s'ajuste au texte */
-    height: auto;        /* La hauteur s'ajuste au contenu */
-    min-width: 200px;    /* Optionnel : évite que la box soit trop étroite */
-
-    /* 2. Centrage */
-    margin: 0 auto;      /* Centre horizontalement dans un flux classique */
-    margin-top: 20px    ; /* Espace au-dessus */
+    width: fit-content;
+    height: auto;
+    min-width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
+
 .CV:hover {
-    transform: translateY(-10px) scale(1.02); /* Soulève légèrement et agrandit à peine */
-    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3); /* Ombre plus diffuse et colorée */
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3);
     cursor: pointer;
 }
+
 .contact-link {
     margin-top: 2vh;
     padding: 1vh 1.5vw;
@@ -151,20 +233,19 @@ body {
     color: var(--dark);
 }
 
-.CV p{
+.CV p {
     line-height: 1.4;
     color: #666;
     font-size: 1rem;
     margin: 0;
+    transition: color 0.3s ease;
 }
 
 .profile-pic {
-    height: 12vh; /* Taille contrôlée pour les logos STAPS/PDZ */
+    height: 12vh;
     width: auto;
 }
 
-
-/* 2. Utilisez !important si nécessaire pour écraser l'état final de l'animation */
 .card:hover {
     transform: translateY(-10px) !important; 
     box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3) !important;
@@ -172,28 +253,31 @@ body {
 }
 
 .card-logo {
-    height: 60px; /* Taille contrôlée pour les logos STAPS/PDZ */
+    height: 60px;
     width: auto;
     margin-bottom: 15px;
 }
+
 .card h2 {
     font-size: 1.2rem;
     margin-bottom: 5px;
     color: var(--dark);
+    transition: color 0.3s ease;
 }
 
 .card h3 {
     font-size: 0.9rem;
     color: var(--primary);
     margin-bottom: 15px;
+    transition: color 0.3s ease;
 }
 
 .card p {
     font-size: 0.95rem;
     line-height: 1.4;
     color: #666;
+    transition: color 0.3s ease;
 }
-
 
 /* --- Footer --- */
 footer {
@@ -202,20 +286,21 @@ footer {
     text-align: center;
     padding: 15px 0;
     font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- Responsive --- */
 @media (max-width: 850px) {
     .content {
-        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-columns: 1fr;
     }
 }
-
 
 /* Animation */
 .fade-in {
     animation: fadeInAnim 0.8s ease-out forwards;
 }
+
 @keyframes fadeInAnim {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }

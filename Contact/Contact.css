@@ -4,23 +4,117 @@
     --dark: #1a1a2e;
     --light-bg: #f4f7f6;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     color: #333;
     line-height: 1.6;
     min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
 }
+
+/* ===== STYLES MODE JOUR/NUIT ===== */
+.theme-toggle {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+}
+
+.theme-toggle:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+}
+
+body.dark-mode .top-nav {
+    background-color: #1e293b;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .nav-links a {
+    color: #e2e8f0;
+}
+
+body.dark-mode .nav-links a:hover {
+    color: var(--primary);
+}
+
+body.dark-mode .card,
+body.dark-mode .carde,
+body.dark-mode .cardf {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .card:hover,
+body.dark-mode .carde:hover,
+body.dark-mode .cardf:hover {
+    box-shadow: 0 12px 25px rgba(0, 210, 255, 0.4);
+}
+
+body.dark-mode .card h2,
+body.dark-mode .carde h2,
+body.dark-mode .cardf h2 {
+    color: #60a5fa;
+}
+
+body.dark-mode .card p,
+body.dark-mode .carde p,
+body.dark-mode .cardf p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .contact-link {
+    background-color: #1e293b;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+body.dark-mode .contact-link:hover {
+    background-color: var(--primary);
+    color: #1e293b;
+}
+
+body.dark-mode .skill-category {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .bar {
+    background: #334155;
+}
+
+body.dark-mode footer {
+    background-color: #1e293b;
+    color: #94a3b8;
+}
+
+/* ===== FIN STYLES MODE JOUR/NUIT ===== */
 
 /* --- Navigation --- */
 .top-nav {
     display: flex; 
-    justify-content: space-between; /* Pousse .logo à gauche et .nav-links à droite */
+    justify-content: space-between;
     align-items: center;
     padding: 0 5vw; 
     background: var(--dark); 
@@ -29,12 +123,14 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
 /* Conteneur des liens */
 .nav-links {
     display: flex;
-    gap: 20px; /* Espace entre chaque lien */
+    gap: 20px;
+    align-items: center;
 }
 
 /* Style des liens */
@@ -47,7 +143,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--primary); /* Change de couleur au survol */
+    color: var(--primary);
 }
 
 .icon {
@@ -55,7 +151,6 @@ body {
     width: auto;
     display: block;
 }
-
 
 /* --- Contenu Principal (Grille) --- */
 .content {
@@ -84,20 +179,19 @@ body {
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
-
-
 
 /* Cible précisément l'image avec la classe logo */
 img.logo {
-    height: 4vh !important; /* Ajustez cette valeur en pixels pour réduire */
+    height: 4vh !important;
     width: auto;
     max-width: 75%;
     margin-bottom: 1.5vh;
     display: block;
     object-fit: contain;
 }
+
 /* --- Liens de contact (Boutons) --- */
 .contact-link {
     margin-top: 2vh;
@@ -126,6 +220,7 @@ img.logo {
 .card:hover .icon, .carde:hover .icon, .cardf:hover .icon {
     transform: scale(1.1);
 }
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -139,6 +234,7 @@ img.logo {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     border-bottom: 4px solid var(--primary);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .skill-item {
@@ -159,6 +255,7 @@ img.logo {
     height: 8px;
     border-radius: 10px;
     overflow: hidden;
+    transition: background 0.3s ease;
 }
 
 .fill {
@@ -167,6 +264,7 @@ img.logo {
     border-radius: 10px;
     transition: width 1.5s ease-in-out;
 }
+
 /* --- Footer --- */
 footer {
     background: var(--dark);
@@ -178,8 +276,8 @@ footer {
     justify-content: center;
     font-size: 0.85rem;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 
 /* --- Animations --- */
 .fade-in { animation: fadeIn 1s forwards; }

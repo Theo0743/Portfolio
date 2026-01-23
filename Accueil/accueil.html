@@ -19,6 +19,7 @@
                     <a href="../Compétences/competences.html">Compétences</a>
                     <a href="../Veille/veille.html">Veille</a>
                     <a href="../Contact/Contact.html">Contact</a>
+                    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
             </div>
         </nav>
 
@@ -64,5 +65,32 @@
             <p>&copy; 2026 Portfolio appartenant à Théo Morchoisne. Tous droits réservés.</p>
         </footer>
     </section>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeButton = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeButton.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeButton.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeButton = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeButton.textContent = '☀️';
+            }
+        });
+    </script>
 </body>
-</html> 
+</html>
