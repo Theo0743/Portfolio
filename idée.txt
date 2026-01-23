@@ -1,0 +1,9 @@
+1 - Finir le link des projets 
+
+2 - Faire une base données contenant tous les projets de cours (CEJM, CGE, B1, B2, B3, CEJMA)
+    Il faut un moins une table matière, Table cours, une table année (Première ou Deuxieme année)
+
+3 - Faire une sorte de catalogque afin de retrouver les cours avec une zone de recheche
+
+4 - Complété la Veille
+
