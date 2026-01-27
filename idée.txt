@@ -9,5 +9,4 @@
 
 5 - Refaire le Footer 
 
-6 - Theme sombre sélectionnable ajouté a : Accueil.html / experiences.html / Contact.html / Projets.html 
-        Reste a faire Index.html / Veille.html / competences.html
+6 - Theme sombre sélectionnable ajouté a : Accueil.html / experiences.html / Contact.html / Projets.html / Index.html / Veille.html / competences.html

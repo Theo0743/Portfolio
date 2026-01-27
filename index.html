@@ -33,6 +33,8 @@
                     <a href="Compétences/competences.html">Compétences</a>
                     <a href="Veille/veille.html">Veille</a>
                     <a href="Contact/contact.html">Contact</a>
+                    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
             </div>
         </nav>
 
@@ -112,6 +114,32 @@
         window.location.href = destination + ".html";
     }
 }  
+    </script>
+        <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeButton = document.querySelector('.theme-toggle');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeButton.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeButton.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeButton = document.querySelector('.theme-toggle');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeButton.textContent = '☀️';
+            }
+        });
     </script>
 </body>
 </html> 
