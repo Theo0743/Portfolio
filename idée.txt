@@ -10,3 +10,7 @@
 5 - Refaire le Footer 
 
 6 - Theme sombre sélectionnable ajouté a : Accueil.html / experiences.html / Contact.html / Projets.html / Index.html / Veille.html / competences.html
+
+7 - Projets.html : refaire proprement la taille 
+
+8 - Réajuster la taille des box pour quelle fasse tout le temps la meme taille en fonction du Zoom
